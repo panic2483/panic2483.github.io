@@ -7,6 +7,9 @@
     }
 }
 
-figure.loading{
+div.image{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     animation: loading 1.5s linear infinite;
 }

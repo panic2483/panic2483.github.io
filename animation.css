@@ -1,3 +1,14 @@
+body{
+    background-color: beige;
+}
+div.box{
+    background-color: white;
+    color: black;
+    width: 500px;
+    border: 3px solid black;
+    border-radius: 10px;
+    padding: 5px;
+}
 @keyframes loading{
     from{
         transform: rotate(0deg);
@@ -7,6 +18,12 @@
     }
 }
 
-figure.loading{
-    animation: loading 1.5s linear infinite;
+img{
+    width: 50px;
+    animation: loading 2s linear infinite;
+    background-color: transparent;
+}
+figure{
+    display: flex;
+    margin: 5px;
 }

@@ -1,9 +1,14 @@
 body{
-    background-color: beige;
+    background-color: grey;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 div.box{
-    background-color: white;
     color: black;
+    background-color: white;
     width: 500px;
     border: 3px solid black;
     border-radius: 10px;
@@ -22,8 +27,4 @@ img{
     width: 50px;
     animation: loading 2s linear infinite;
     background-color: transparent;
-}
-figure{
-    display: flex;
-    margin: 5px;
 }

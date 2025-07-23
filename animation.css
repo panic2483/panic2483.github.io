@@ -27,5 +27,4 @@ div.box{
 img{
     width: 50px;
     animation: loading 2s linear infinite;
-    background-color: transparent;
 }

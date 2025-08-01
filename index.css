@@ -20,6 +20,17 @@ div.box{
     margin-bottom: 10px;
 }
 
+@media (max-width: 1024px) {
+    p.pc{
+        display: none;
+    }
+}
+
+@media (min-width: 1024px){
+    p.handy{
+        display: none;
+    }
+}
 
 @keyframes loading{
     from{

@@ -6,7 +6,11 @@ body{
     flex-flow: column;
     align-items: center;
 }
-div.box-loading{
+
+div.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: black;
     background-color: white;
     width: 500px;
@@ -15,6 +19,8 @@ div.box-loading{
     padding: 5px;
     margin-bottom: 10px;
 }
+
+
 @keyframes loading{
     from{
         transform: rotate(0deg);
@@ -42,17 +48,14 @@ div.box-loading{
     }
 }
 
-div.box-colorchange{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: black;
-    background-color: white;
-    width: 500px;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 10px;
+@keyframes bounce{
+    0%, 100%{
+        transform: translateY(0);   
+    }
+
+    50%{
+        transform: translateY(-20px);
+    }
 }
 
 div.colorchange{
@@ -63,7 +66,12 @@ div.colorchange{
     animation: colorchange 4s linear infinite;
 }
 
-img{
+img.loading{
     width: 50px;
     animation: loading 2s linear infinite;
+}
+
+img.bounce{
+    width: 200px;
+    animation: bounce 1s linear infinite;
 }

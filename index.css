@@ -20,13 +20,15 @@ div.box{
     margin-bottom: 10px;
 }
 
-@media (max-width: 768px) { /* 768 px der Standart für Handys zeigt also den PC Text nicht auf handy an*/
+@media (max-width: 768px) { /* 768 px der Standart für Handys zeigt also den 
+    PC Text nicht auf Handy an*/
     p.pc{
         display: none;
     }
 }
 
-@media (min-width: 1024px){ /* 1024 px standart für PC zeigt also den Handy Text nicht auf PC an*/
+@media (min-width: 1024px){ /* 1024 px standart für PC zeigt also den Handy Text 
+    nicht auf PC an, nicht auf 768 gesetzt wegen Tabletts*/
     p.handy{
         display: none;
     }

@@ -2,23 +2,67 @@ body{
     background-color: grey;
     font-family: Arial, sans-serif;
     text-align: center;
+    height: screen;
+}
+
+div.container{
     display: flex;
-    flex-flow: column;
-    align-items: center;
+    justify-content: space-evenly;
 }
 
 div.box{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: black;
     background-color: white;
     width: 500px;
+    height: 300px;
     border: 3px solid black;
     border-radius: 10px;
     margin: 20px;
     padding: 5px;
     margin-bottom: 10px;
+}
+
+div.colorchange{
+    width: 100px;
+    height: 100px;
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 5px;
+    animation: colorchange 4s linear infinite;
+}
+
+div.hover{
+    display: flex;
+    background-color: grey;
+    color: orange;
+    width: 100px;
+    height: 100px;
+    border: 3px solid black;
+    margin: 5px;
+    padding: 2em;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+}
+
+div.hover:hover{
+    background-color: black;
+    color: white;
+    padding: 3em;
+    border-radius: 10px;
+} 
+img.loading{
+    width: 50px;
+    animation: loading 2s linear infinite;
+}
+
+img.bounce{
+    width: 200px;
+    animation: bounce 1s linear infinite;
 }
 
 @media (max-width: 768px) { /* 768 px der Standart für Handys zeigt also den 
@@ -72,41 +116,3 @@ div.box{
     }
 }
 
-div.colorchange{
-    width: 100px;
-    height: 100px;
-    border: 3px solid black;
-    border-radius: 10px;
-    margin: 5px;
-    animation: colorchange 4s linear infinite;
-}
-
-div.hover{
-    display: flex;
-    background-color: grey;
-    color: orange;
-    width: 100px;
-    height: 100px;
-    border: 3px solid black;
-    margin: 5px;
-    padding: 2em;
-    justify-content: center;
-    align-items: center;
-    transition: 1s;
-}
-
-div.hover:hover{
-    background-color: black;
-    color: white;
-    padding: 3em;
-    border-radius: 10px;
-} 
-img.loading{
-    width: 50px;
-    animation: loading 2s linear infinite;
-}
-
-img.bounce{
-    width: 200px;
-    animation: bounce 1s linear infinite;
-}

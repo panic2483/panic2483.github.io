@@ -67,6 +67,26 @@ div.colorchange{
     animation: colorchange 4s linear infinite;
 }
 
+div.hover{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border: 3px solid black;
+    margin: 5px;
+    padding: 2em;
+    background-color: white;
+    color: black;
+    justify-content: center;
+    align-items: center;
+    transition: padding 1s linear;
+}
+
+div.hover:hover{
+    background-color: black;
+    color: white;
+    padding: 3em;
+    border-radius: 10px;
+}
 img.loading{
     width: 50px;
     animation: loading 2s linear infinite;

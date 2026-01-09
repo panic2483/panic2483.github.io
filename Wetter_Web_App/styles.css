@@ -44,3 +44,16 @@ h1{
     width: 5em;
     cursor: pointer;
 }
+
+#app-wrapper{
+    display:flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: space-between;
+}
+
+#search-box{
+    display:flex;
+    width: 50%;
+}
+

@@ -67,8 +67,6 @@ h1{
     gap: 12px;
 }
 #weather_data > img{
-    
     border-radius: 50%;
-    background-color: lightskyblue;
 }
 

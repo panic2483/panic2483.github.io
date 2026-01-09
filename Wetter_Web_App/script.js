@@ -1,4 +1,4 @@
-function fetchWeather() {
+async function fetchWeather() {
     let searchInput = document.getElementById("search").value;
     const weatherDataSection = document.getElementById("weather_data");
     weatherDataSection.style.display = "block";
@@ -51,18 +51,19 @@ function fetchWeather() {
         }
 
         const data = await response.json();
-
         weatherDataSection.innerHTML = `
         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}" width="100" /> 
         <div>
             <h2>Wetter in ${data.name}</h2>
-            <p><strong>Temperatur:</strong> ${Math.round(data.main.temp - 273.15)}°C</p> //Umrechnen Temperatur in Klevin zu Grad Celsius
+            <p><strong>Temperatur:</strong> ${Math.round(data.main.temp - 273.15)}°C</p> 
             <p><strong>Wetterbeschreibung:</strong> ${data.weather[0].description}</p>
         </div>
-        `;
-        document.getElementById("search").value = ""; //Suchfeld nach der Suche resetten
-        const geocodeData = await getLonAndLat(); //Koordinaten der eingegebenen Stadt erhalten
-        getWeatherData(geocodeData.lon, geocodeData.lat); //Anhand der Koordinaten Wetterdaten abrufen
+        `; // ${Math.round(data.main.temp - 273.15)} = //Umrechnen Temperatur in Klevin zu Grad Celsius
+        }
+
+    document.getElementById("search").value = ""; //Suchfeld nach der Suche resetten
+    const geocodeData = await getLonAndLat(); //Koordinaten der eingegebenen Stadt erhalten
+    getWeatherData(geocodeData.lon, geocodeData.lat); //Anhand der Koordinaten Wetterdaten abrufen
         
-    }
+    
 }

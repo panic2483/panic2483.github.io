@@ -45,7 +45,7 @@ h1{
     cursor: pointer;
 }
 
-#app-wrapper{
+#app_wrapper{
     display:flex;
     flex-direction: column;
     place-items: center;

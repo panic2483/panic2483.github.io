@@ -8,8 +8,8 @@ async function fetchWeather() {
     if (searchInput == "") {
         weatherDataSection.innerHTML = `
         <div>
-            <h2>Empty Input!</h2>
-            <p>Please try again with a valid <u>city name</u>.</p>
+            <h2>Leere Eingabe!</h2>
+            <p>Bitte versuche es erneut mit einem gültigen <u>Städtenamen</u>.</p>
         </div>
         `;
         return;
@@ -51,6 +51,7 @@ async function fetchWeather() {
         }
 
         const data = await response.json();
+        weatherDataSection.style.display = "flex";
         weatherDataSection.innerHTML = `
         <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="${data.weather[0].description}" width="100" /> 
         <div>

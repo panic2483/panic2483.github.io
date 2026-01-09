@@ -50,10 +50,25 @@ h1{
     flex-direction: column;
     place-items: center;
     justify-content: space-between;
+    
 }
 
 #search-box{
     display:flex;
     width: 50%;
+}
+
+#weather_data{
+    padding: 1.5em;
+    margin-top: 20px;
+
+    text-align: center;
+    align-items: center;
+    gap: 12px;
+}
+#weather_data > img{
+    
+    border-radius: 50%;
+    background-color: lightskyblue;
 }
 

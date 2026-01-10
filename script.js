@@ -16,33 +16,54 @@ async function fetchWeather() {
     }
 
     async function getLonAndLat(){
-        const countryCode = 49; //CountryCode von Deutschland (wie beim Telefon)
-        const geocodeURL = `https://api.openweathermap.org/geo/1.0/direct?q=${searchInput.replace(" ", "%20")},${countryCode}&limit=1&appid=${apiKey}`;
-        const response = await fetch(geocodeURL);
+        const countryCode = "DE"; // Countrycode für Deutschland (primärer Filter)
+        const geocodeURL = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(searchInput)},${countryCode}&limit=5&appid=${apiKey}`;
+        let response = await fetch(geocodeURL);
 
         if (!response.ok) {
             console.log("Error fetching geocode data", response.status);
             return;
         }
         
-        const data = await response.json();
+        let data = await response.json();
 
+        // Wenn keine Treffer in Deutschland, erneut global suchen
         if (data.length == 0){
+            // Kurze Benutzerinfo, dass globale Suche startet
             weatherDataSection.innerHTML = `
             <div>
-                <h2>Die eingegebene Stadt konnte nicht gefunden werden!</h2>
-                <p>Bitte versuche es erneut mit einem gültigen Städtenamen.</p>
+                <p>Keine Treffer in Deutschland gefunden. Suche weltweit...</p>
             </div>
             `;
-            return;
+
+            const geocodeURLGlobal = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(searchInput)}&limit=5&appid=${apiKey}`;
+            response = await fetch(geocodeURLGlobal);
+
+            if (!response.ok) {
+                console.log("Error fetching global geocode data", response.status);
+                return;
+            }
+
+            data = await response.json();
+
+            if (data.length == 0){
+                weatherDataSection.innerHTML = `
+                <div>
+                    <h2>Die eingegebene Stadt konnte nicht gefunden werden!</h2>
+                    <p>Bitte versuche es erneut mit einem gültigen Städtenamen.</p>
+                </div>
+                `;
+                return;
+            }
         }   
-        else {
-            return data[0];    
-        }
+        
+        const exact = data.find(d => d.name.toLowerCase() === searchInput.toLowerCase());
+        const best = exact || data[0];
+        return best;    
     }
 
     async function getWeatherData(lon, lat) { //lon = longitude, lat = latitude also Breiten und Löngengrade
-        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+        const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&lang=de`;
         const response = await fetch(weatherURL);
 
         if (!response.ok) {
@@ -64,6 +85,7 @@ async function fetchWeather() {
 
     document.getElementById("search").value = ""; //Suchfeld nach der Suche resetten
     const geocodeData = await getLonAndLat(); //Koordinaten der eingegebenen Stadt erhalten
+    if (!geocodeData) return; //Abbrechen, wenn die Stadt nicht gefunden wurde
     getWeatherData(geocodeData.lon, geocodeData.lat); //Anhand der Koordinaten Wetterdaten abrufen
         
     
